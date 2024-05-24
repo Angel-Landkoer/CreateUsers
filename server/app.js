@@ -1,4 +1,5 @@
 import express from 'express'
+import { routeAPI } from './router/index.js'
 
 export function app(PORT) {
   const app = express()
@@ -6,11 +7,11 @@ export function app(PORT) {
   // Delete name express
   app.disable("x-powered-by")
 
-  app.use("/", (req, res) => { res.send("<h1>Welcome</h1>") })
+  app.get("/", (req, res) => { res.send("<h1>Welcome</h1>") })
 
 
   // Routes
-  
+  routeAPI(app)
 
   // Middlewares
 
