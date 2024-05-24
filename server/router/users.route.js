@@ -1,14 +1,14 @@
 import express from 'express'
-
+import { createUser, deleteUser, getUserId, getUsers } from '../controllers/users.controller.js'
 
 const route = express.Router()
 
-route.get("/", )
+route.get("/", getUsers)
 
-route.get("/:id", )
+route.get("/:id", getUserId)
 
-route.post("/", )
+route.post("/", createUser)
 
-route.delete("/:id", )
+route.delete("/:id", deleteUser)
 
 export default route
