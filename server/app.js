@@ -1,5 +1,6 @@
 import express from 'express'
 import { routeAPI } from './router/index.js'
+import { boomErrorHandler, errorHandler } from './middlewares/error.handler.js'
 
 export function app(PORT) {
   const app = express()
@@ -14,6 +15,8 @@ export function app(PORT) {
   routeAPI(app)
 
   // Middlewares
+  app.use(boomErrorHandler)
+  app.use(errorHandler)
 
 
   app.listen(PORT, () => {
