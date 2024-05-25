@@ -22,15 +22,15 @@ const client = createClient({
 export class UserService {
   static async getAll() {
     const result = await client.execute("SELECT * FROM users")
-    console.log(result)
+    return result
   }
 
   static async getId(id) {
     const result = await client.execute({
-      sql: "SELECT * FORM users WHERE id = ?",
+      sql: "SELECT * FROM users WHERE id = ?",
       args: [id]
     })
-    console.log(result)
+    return result
   }
 
   static async create(body) {
@@ -41,16 +41,16 @@ export class UserService {
       args: { id: idR, name, age, email, avatar }
     })
 
-    console.log(result)
+    return result
   }
 
   static async delete(id) {
     const result = client.execute({
-      sql: "DELETE FORM users WHERE id = ?",
+      sql: "DELETE FROM users WHERE id = ?",
       args: [id]
     })
 
-    console.log(result)
+    return result
   }
 
 }
