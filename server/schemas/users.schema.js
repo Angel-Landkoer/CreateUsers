@@ -6,12 +6,11 @@ const age = Joi.number().integer().min(10).max(100)
 const email = Joi.string().email()
 const avatar = Joi.string().uri()
 
-export const idSch = Joi.object({
+export const idUser = Joi.object({
   id: id.required()
 })
 
 export const createUserSch = Joi.object({
-  id: id.required(),
   name: name.required(),
   age: age.required(), 
   email: email.required(),
