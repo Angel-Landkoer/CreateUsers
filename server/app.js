@@ -1,7 +1,8 @@
 import express, { json } from 'express'
 import { routeAPI } from './router/index.js'
 import { boomErrorHandler, errorHandler } from './middlewares/error.handler.js'
-import { corsHandler } from './middlewares/cors.handler.js'
+// import { corsHandler } from './middlewares/cors.handler.js'
+import cors from 'cors'
 
 export function app(PORT) {
   const app = express()
@@ -11,13 +12,14 @@ export function app(PORT) {
 
   app.get("/", (req, res) => { res.send("<h1>Welcome</h1>") })
 
+  // Middlewares
+  app.use(json())
+  app.use(cors())
 
   // Routes
   routeAPI(app)
 
-  // Middlewares
-  app.use(json())
-  app.use(corsHandler())
+  // Middlewares Error
   app.use(boomErrorHandler)
   app.use(errorHandler)
 
